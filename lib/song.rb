@@ -9,8 +9,7 @@ class Song
     @artist = artist
     @genre = genre
     @@count += 1
-    if !(@@genres.include?(genre))
-      @@genres << genre
+    @@genres << genre
   end
   
   def count
@@ -18,7 +17,13 @@ class Song
   end
   
   def genres
-    @@genres
+    all_genres = []
+    @@genres.each do |genre|
+      if !(all_genres.include?(genre))
+        all_genres << genre
+      end
+    end
+    all_genres
   end
   
 end
